@@ -3,3 +3,7 @@
 .coverage
 .coveralls.yml
 /doc/build
+.idea/
+build/
+dist/
+pyriemann.egg-info/
