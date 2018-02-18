@@ -1,7 +1,6 @@
 import numpy
 import sys
 import math
-import matplotlib.pyplot as plt
 
 from .utils.utils import check_version
 
@@ -110,40 +109,6 @@ class BasePermutation():
                 this_mask = (groups == group)
                 indices[this_mask] = rs.permutation(indices[this_mask])
         return y[indices]
-
-    def plot(self, nbins=10, range=None, axes=None):
-        """Plot results of the permutation test.
-
-        Parameters
-        ----------
-        nbins : integer or array_like or 'auto', optional
-            If an integer is given, bins + 1 bin edges are returned,
-            consistently with numpy.histogram() for numpy version >= 1.3.
-            Unequally spaced bins are supported if bins is a sequence.
-
-        range : tuple or None, optional
-            The lower and upper range of the bins. Lower and upper outliers are
-            ignored. If not provided, range is (x.min(), x.max()).
-            Range has no effect if bins is a sequence.
-            If bins is a sequence or range is specified, autoscaling is based
-            on the specified bin range instead of the range of x.
-
-        axes : axes handle (default None)
-            Axes handle for matplotlib. if None a new figure will be created.
-        """
-        if axes is None:
-            fig, axes = plt.subplots(1, 1)
-        axes.hist(self.scores_[1:], nbins, range)
-        x_val = self.scores_[0]
-        y_max = axes.get_ylim()[1]
-        axes.plot([x_val, x_val], [0, y_max], '--r', lw=2)
-        x_max = axes.get_xlim()[1]
-        x_min = axes.get_xlim()[0]
-        x_pos = x_min + ((x_max - x_min) * 0.25)
-        axes.text(x_pos, y_max * 0.8, 'p-value: %.3f' % self.p_value_)
-        axes.set_xlabel('Score')
-        axes.set_ylabel('Count')
-        return axes
 
 
 class PermutationModel(BasePermutation):
