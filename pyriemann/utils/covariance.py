@@ -1,6 +1,5 @@
 import numpy
 from sklearn.covariance import oas, ledoit_wolf, fast_mcd, empirical_covariance
-from matplotlib import mlab
 
 # Mapping different estimator on the sklearn toolbox
 

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='pyriemann-slim',
-      version='0.3.0',
+      version='0.3.1',
       description='Riemannian Geometry for python for embedded systems',
       url='',
       author='Alexandre Barachant',
